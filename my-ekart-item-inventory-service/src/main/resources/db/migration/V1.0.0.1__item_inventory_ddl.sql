@@ -1,0 +1,21 @@
+CREATE TABLE `inventory_item` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`item_id` VARCHAR(50) NOT NULL,
+	`category` VARCHAR(20) NOT NULL,
+	`sub_category` VARCHAR(20),
+	`item_name` VARCHAR(100) NOT NULL,
+	`description` TEXT,
+	`available_quantity` BIGINT(20),
+	`price` DECIMAL(10,2),
+	`status_cd` VARCHAR(50) NOT NULL,
+	`version` INT(11) NOT NULL,
+	`created_by` VARCHAR(100) NOT NULL,
+	`created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`updated_by` VARCHAR(100) NOT NULL,
+	`updated_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `UK_INVITM_IID` (`item_id`),
+	KEY  `IDX_INVITM_ITN` (`item_name`),
+	KEY `IDX_INVITM_CAT` (`category`),
+	KEY `IDX_INVITM_SUBCAT` (`sub_category`)
+);

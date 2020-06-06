@@ -5,7 +5,7 @@ server:
 ### Application Properties 
 spring:
   application:
-    name: novopay-admin-service
+    name: myekart-admin-service
     
     
 ### Datasource properties
@@ -23,5 +23,5 @@ spring:
     enabled: true
     
 ## URL Details
-serviceurl: 
+service: 
   admin: http://localhost:8010

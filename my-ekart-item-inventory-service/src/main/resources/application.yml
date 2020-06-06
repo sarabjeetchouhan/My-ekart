@@ -1,0 +1,28 @@
+### Server properties
+server:
+  port: 8015
+  
+### Application Properties 
+spring:
+  application:
+    name: myekart-item-inventory-service
+    
+    
+### Datasource properties
+  datasource:
+    url: jdbc:mysql://localhost:3306/myekart_item_inventory?useSSL=false
+    username: root
+    password: root123
+    
+### Flyway properties   
+  flyway:
+    table: myekart_item_inventory_schema_version
+    locations: classpath:db/migration
+    placeholder-replacement: false
+    encoding: UTF-8
+    enabled: true
+    
+## URL Details
+service: 
+  admin: http://localhost:8010
+  item-inventory: http://localhost:8015

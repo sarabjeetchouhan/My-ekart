@@ -1,6 +1,6 @@
 package com.myekart.utilities.config.exception;
 
-public class ApplicationException extends RuntimeException {
+public class ApplicationException extends Exception {
 
 	private Object[] args;
 

@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(CommonUtils.encrypt(request.getPassword()));
 		user.setStatusCd(StatusCd.ACTIVE.status());
 		userRespository.save(user);
-		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS));
+		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS, request.getFirstName() + " added successfully"));
 		return response;
 	}
 

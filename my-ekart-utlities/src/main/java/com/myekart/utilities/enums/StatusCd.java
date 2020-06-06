@@ -25,8 +25,8 @@ public enum StatusCd {
 	REPLACED("REPLACED"),
 	/** The returned. */
 	RETURNED("RETURNED"),
-	/** The instock. */
-	INSTOCK("INSTOCK"),
+	/** The in stock. */
+	IN_STOCK("IN_STOCK"),
 	/** The out of stock. */
 	OUT_OF_STOCK("OUT_OF_STOCK");
 

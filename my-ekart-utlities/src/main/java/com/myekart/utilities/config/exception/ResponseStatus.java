@@ -20,6 +20,11 @@ public class ResponseStatus implements Serializable {
 	public ResponseStatus(String status) {
 		this.status = status;
 	}
+	
+	public ResponseStatus(String status,String message) {
+		this.status = status;
+		this.message = message;
+	}
 
 	public ResponseStatus(String status, String message, Object... arguments) {
 		this.status = status;
