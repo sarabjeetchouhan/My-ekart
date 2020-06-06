@@ -10,7 +10,7 @@ import com.myekart.admin.user.entity.User;
 import com.myekart.admin.user.exception.UserException;
 import com.myekart.admin.user.repositories.UserRespository;
 import com.myekart.admin.user.util.UserMapper;
-import com.myekart.messaging.admin.user.UserContant;
+import com.myekart.messaging.admin.user.UserConstant;
 import com.myekart.messaging.admin.user.UserRequest;
 import com.myekart.messaging.admin.user.UserResponse;
 import com.myekart.utilities.commons.CommonUtils;
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 	private void validateUser(String userName) throws UserException {
 		User user = userRespository.findByUserName(userName);
 		if (user != null) {
-			throw new UserException(UserContant.USER_ALREADY_EXIST);
+			throw new UserException(UserConstant.USER_ALREADY_EXIST);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 		UserResponse response = new UserResponse();
 		User user = userRespository.findByUserName(username);
 		if (user == null) {
-			throw new UserException(UserContant.USER_NOT_FOUND_WITH_USERNAME, username);
+			throw new UserException(UserConstant.USER_NOT_FOUND_WITH_USERNAME, username);
 		}
 		response.setMessage(userMapper.entityToRequest(user));
 		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS));

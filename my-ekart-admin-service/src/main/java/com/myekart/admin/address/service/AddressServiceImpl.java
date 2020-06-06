@@ -26,7 +26,7 @@ public class AddressServiceImpl implements AddressService {
 	private AddressMapper addressMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.MANDATORY, isolation = Isolation.READ_COMMITTED, rollbackFor = AddressException.class)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = AddressException.class)
 	public AddressResponse addNewAddress(AddressRequest request) throws AddressException {
 		AddressResponse response = new AddressResponse();
 		Address address = addressMapper.requestToEntity(request);
@@ -46,6 +46,8 @@ public class AddressServiceImpl implements AddressService {
 		if (address == null) {
 			throw new AddressException("Address not found");
 		}
+		address.setStatusCd(StatusCd.DELETED.status());
+		addressRepository.save(address);
 		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS));
 		response.getStatus().setMessage("New address deleted successfully");
 		return response;

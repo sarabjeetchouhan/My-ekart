@@ -1,5 +1,9 @@
 package com.myekart.messaging.admin.user;
 
+import java.util.List;
+
+import com.myekart.messaging.admin.address.AddressRequest;
+import com.myekart.messaging.admin.paymentInfo.PaymentInfoRequest;
 import com.myekart.utilities.commons.RequestModel;
 
 public class UserRequest extends RequestModel {
@@ -23,7 +27,9 @@ public class UserRequest extends RequestModel {
 
 	private String userType;
 
-	private String address;
+	private List<AddressRequest> addresses;
+
+	private List<PaymentInfoRequest> paymentInfos;
 
 	public String getUserId() {
 		return userId;
@@ -89,12 +95,20 @@ public class UserRequest extends RequestModel {
 		this.userType = userType;
 	}
 
-	public String getAddress() {
-		return address;
+	public List<AddressRequest> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddresses(List<AddressRequest> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<PaymentInfoRequest> getPaymentInfos() {
+		return paymentInfos;
+	}
+
+	public void setPaymentInfos(List<PaymentInfoRequest> paymentInfos) {
+		this.paymentInfos = paymentInfos;
 	}
 
 	@Override
@@ -141,9 +155,14 @@ public class UserRequest extends RequestModel {
 			builder.append(userType);
 			builder.append(", ");
 		}
-		if (address != null) {
-			builder.append("address=");
-			builder.append(address);
+		if (addresses != null) {
+			builder.append("addresses=");
+			builder.append(addresses);
+			builder.append(", ");
+		}
+		if (paymentInfos != null) {
+			builder.append("paymentInfos=");
+			builder.append(paymentInfos);
 		}
 		builder.append("]");
 		return builder.toString();

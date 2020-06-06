@@ -1,9 +1,15 @@
 package com.myekart.admin.user.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.myekart.admin.address.entity.Address;
+import com.myekart.admin.paymentInfo.entity.PaymentInfo;
 import com.myekart.utilities.commons.BaseEntity;
 
 @Entity
@@ -36,6 +42,14 @@ public class User extends BaseEntity {
 
 	@Column(name = "user_type", nullable = false)
 	private String userType;
+
+	@OneToMany
+	@JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+	private List<Address> addresses;
+
+	@OneToMany
+	@JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+	private List<PaymentInfo> paymentInfos;
 
 	public String getUserId() {
 		return userId;
@@ -99,6 +113,30 @@ public class User extends BaseEntity {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public String getPasswordEncry() {
+		return passwordEncry;
+	}
+
+	public void setPasswordEncry(String passwordEncry) {
+		this.passwordEncry = passwordEncry;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<PaymentInfo> getPaymentInfos() {
+		return paymentInfos;
+	}
+
+	public void setPaymentInfos(List<PaymentInfo> paymentInfos) {
+		this.paymentInfos = paymentInfos;
 	}
 
 }
