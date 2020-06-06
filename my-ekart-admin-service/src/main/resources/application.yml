@@ -1,0 +1,27 @@
+### Server properties
+server:
+  port: 8010
+  
+### Application Properties 
+spring:
+  application:
+    name: novopay-admin-service
+    
+    
+### Datasource properties
+  datasource:
+    url: jdbc:mysql://localhost:3306/myekart_admin?useSSL=false
+    username: root
+    password: root123
+    
+### Flyway properties   
+  flyway:
+    table: myekart_admin_schema_version
+    locations: classpath:db/migration
+    placeholder-replacement: false
+    encoding: UTF-8
+    enabled: true
+    
+## URL Details
+serviceurl: 
+  admin: http://localhost:8010

@@ -1,0 +1,68 @@
+CREATE TABLE `app_user` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`user_id` VARCHAR(50) NOT NULL,
+	`user_name` VARCHAR(100) NOT NULL,
+	`password` VARBINARY(200) NOT NULL,
+	`first_name` VARCHAR(100) NOT NULL,
+	`last_name` VARCHAR(100) NOT NULL,
+	`email_id` VARCHAR(100),
+	`phone_number` VARCHAR(12) NOT NULL,
+	`user_type` VARCHAR(40) NOT NULL,
+	`status_cd` VARCHAR(50) NOT NULL,
+	`version` INT(11) NOT NULL,
+	`created_by` VARCHAR(100) NOT NULL,
+	`created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`updated_by` VARCHAR(100) NOT NULL,
+	`updated_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `UK_APPUSR_UID` (`user_id`),
+	KEY `IDX_APPUSR_USN` (`user_name`),
+	KEY `IDX_APPUSR_PN` (`phone_number`),
+	KEY `IDX_APPUSR_STSCD` (`status_cd`)
+);
+
+
+CREATE TABLE `address` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`user_id` VARCHAR(50) NOT NULL,
+	`address_id` VARCHAR(50) NOT NULL,
+	`address_type` VARCHAR(10) NOT NULL,
+	`address_line1` TEXT ,
+	`address_line2` TEXT,
+	`street` VARCHAR(50),
+	`landmark` VARCHAR(100),
+	`city` VARCHAR(50),
+	`state` VARCHAR(50),
+	`country` VARCHAR(50),
+	`pincode` VARCHAR(50),
+	`status_cd` VARCHAR(50) NOT NULL,
+	`version` INT(11) NOT NULL,
+	`created_by` VARCHAR(100) NOT NULL,
+	`created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`updated_by` VARCHAR(100) NOT NULL,
+	`updated_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	KEY `IDX_ADD_UID` (`user_id`)
+);
+
+CREATE TABLE `payment_info` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`user_id` VARCHAR(50) NOT NULL,
+	`payment_info_id`  VARCHAR(50) NOT NULL,
+	`payment_mode` VARCHAR(20) NOT NULL,
+	`card_number` VARCHAR(20),
+	`cvv` INT(3),
+	`expiry_month_year` VARCHAR(10),
+	`upi_id` VARCHAR(50),
+	`payee_name` VARCHAR(100),
+	`payee_acc_number` VARCHAR(20),
+	`bank_name` VARCHAR(50),
+	`status_cd` VARCHAR(50) NOT NULL,
+	`version` INT(11) NOT NULL,
+	`created_by` VARCHAR(100) NOT NULL,
+	`created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`updated_by` VARCHAR(100) NOT NULL,
+	`updated_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	KEY `IDX_SPMD_WAN` (`user_id`)
+);

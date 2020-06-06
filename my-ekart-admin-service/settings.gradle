@@ -1,0 +1,3 @@
+rootProject.name = 'my-ekart-admin-service'
+includeFlat 'my-ekart-messaging', 'my-ekart-utlities'
+

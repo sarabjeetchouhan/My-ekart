@@ -1,0 +1,23 @@
+plugins {
+	id 'java'
+}
+group = 'com.myekart'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+   mavenCentral()
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.3.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-parent:2.2.3.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.2.3.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.1.RELEASE'
+	
+	compile group: 'net.sf.dozer', name: 'dozer', version: '5.5.1'
+
+    testImplementation 'junit:junit:4.12'
+}
+

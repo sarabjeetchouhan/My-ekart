@@ -1,0 +1,18 @@
+server:
+  port: 8000
+ 
+spring:
+  application:
+    name: novopay-api-gateway
+    
+## ZUUL Routes configuration
+zuul:
+  prefix: /api
+  ignored-services: '*'
+  routes:
+    users:
+      path: /users/**
+      url: http://localhost:8010/users
+    wallet:
+      path: /wallet/**
+      url: http://localhost:8015/wallet
