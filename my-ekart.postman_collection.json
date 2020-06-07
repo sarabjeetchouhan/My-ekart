@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "2b8cdf6d-52d9-4d9d-9ca7-c235bf526d94",
+		"name": "my-ekart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"jtithin123\",\n    \"password\": \"jithin@123\",\n    \"firstName\": \"Jithin\",\n    \"lastName\": \"John\",\n    \"emailId\": \"John@mailinator.com\",\n    \"phoneNumber\": \"87654435663\",\n    \"userType\": \"USER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/users/laurenmartin/get-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"laurenmartin",
+								"get-user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "add-address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressType\": \"HOME\",\n    \"addressLine1\": \"E-city, phase-1\",\n    \"addressLine2\": \"Konapanaaghara\",\n    \"street\": \"6th street\",\n    \"landmark\": \"Near infosys\",\n    \"city\": \"Bangalore\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"pincode\": \"560100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/7b4b08a777cd4946a342a408b69c924d/address/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"7b4b08a777cd4946a342a408b69c924d",
+								"address",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "payment-info",
+			"item": [
+				{
+					"name": "create-payment-info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"paymentMode\":1,\n\t\"upiId\":\"lauren@okicici\",\n\t\"bankName\":\"ICICI\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/7b4b08a777cd4946a342a408b69c924d/payment-info/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"7b4b08a777cd4946a342a408b69c924d",
+								"payment-info",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "filter-items",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sortByprice\":true\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/inventory/filter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory",
+								"filter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"category\":\"Home Appliances\",\n\t\"subCategory\":\"Furniture\",\n\t\"itemName\":\"Lawn Chair\",\n\t\"description\":\"Wooden finish, highly durable\",\n\t\"availableQuantity\": 10,\n\t\"price\":\"5833\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/inventory/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "create-order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"7b4b08a777cd4946a342a408b69c924d\",\n    \"emailId\": \"laurenmartin@mailinator.com\",\n    \"paymentInfo\": {\n        \"paymentInfoId\": \"\",\n        \"paymentMode\": 1,\n        \"cardNumber\": \"13333456789\",\n        \"cvv\": \"232\",\n        \"expiryMonthYear\": \"02/22\",\n        \"bankName\": \"ICICI\"\n    },\n    \"address\": {\n        \"addressId\": \"\",\n        \"addressType\": \"HOME\",\n        \"addressLine1\": \"^th cross\",\n        \"addressLine2\": \"kormanagala 1st block\",\n        \"street\": \"1st main \",\n        \"landmark\": \"behind essar petrol bunk\",\n        \"city\": \"Bangalore\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"pincode\": \"56034\"\n    },\n    \"totalBill\": \"40000.00\",\n    \"orderItems\": [\n        {\n            \"itemId\": \"3bb0282fba4f4d198404fb3633dc5e22\",\n            \"itemName\": \"One Plus 7T\",\n            \"description\": \"6GB Ram, 64 GB memory, 1 year warranty\",\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/orders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch-all-orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/orders/7b4b08a777cd4946a342a408b69c924d/fetch-all-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"7b4b08a777cd4946a342a408b69c924d",
+								"fetch-all-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order-status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/orders/3c10b98a1432486fb3e13bac0bfe51bf/order-status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"3c10b98a1432486fb3e13bac0bfe51bf",
+								"order-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-order-status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/orders/3c10b98a1432486fb3e13bac0bfe51bf/update-order-status?order_status=OUT_FOR_DELIVERY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"3c10b98a1432486fb3e13bac0bfe51bf",
+								"update-order-status"
+							],
+							"query": [
+								{
+									"key": "order_status",
+									"value": "OUT_FOR_DELIVERY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderItems\": [\n        {\n            \"itemId\": \"3bb0282fba4f4d198404fb3633dc5e22\",\n            \"itemName\": \"One Plus 7T\",\n            \"description\": \"6GB Ram, 64 GB memory, 1 year warranty\",\n            \"quantity\": 5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/inventory/validate-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory",
+								"validate-order"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
