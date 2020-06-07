@@ -25,3 +25,5 @@ spring:
 ## URL Details
 service: 
   admin: http://localhost:8010
+  item-inventory: http://localhost:8015
+  orders: http://localhost:8020

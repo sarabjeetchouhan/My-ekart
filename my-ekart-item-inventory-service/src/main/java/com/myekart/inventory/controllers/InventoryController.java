@@ -14,10 +14,13 @@ import com.myekart.messaging.inventory.InventoryItemFilterRequest;
 import com.myekart.messaging.inventory.InventoryItemRequest;
 import com.myekart.messaging.inventory.InventoryListResponse;
 import com.myekart.messaging.inventory.InventoryResponse;
+import com.myekart.messaging.order.OrderRequest;
+import com.myekart.messaging.order.OrderResponse;
+import com.myekart.utilities.config.exception.ApplicationExceptionHandler;
 
 @RestController
 @RequestMapping("/inventory")
-public class InventoryController {
+public class InventoryController extends ApplicationExceptionHandler {
 
 	@Autowired
 	private InventoryItemService inventoryItemService;
@@ -32,6 +35,12 @@ public class InventoryController {
 	public ResponseEntity<InventoryListResponse> filterItems(@RequestBody InventoryItemFilterRequest request)
 			throws InventoryItemException {
 		return new ResponseEntity<>(inventoryItemService.fetchItemFilter(request), HttpStatus.OK);
+	}
+
+	@PostMapping("/validate-order")
+	public ResponseEntity<OrderResponse> validateOrder(@RequestBody OrderRequest request)
+			throws InventoryItemException {
+		return new ResponseEntity<OrderResponse>(inventoryItemService.validateOrder(request), HttpStatus.CREATED);
 	}
 
 }

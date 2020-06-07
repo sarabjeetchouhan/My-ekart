@@ -1,5 +1,6 @@
 package com.myekart.inventory.item.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -31,6 +32,9 @@ import com.myekart.messaging.inventory.InventoryItemFilterRequest;
 import com.myekart.messaging.inventory.InventoryItemRequest;
 import com.myekart.messaging.inventory.InventoryListResponse;
 import com.myekart.messaging.inventory.InventoryResponse;
+import com.myekart.messaging.order.OrderItemsRequest;
+import com.myekart.messaging.order.OrderRequest;
+import com.myekart.messaging.order.OrderResponse;
 import com.myekart.utilities.commons.CommonUtils;
 import com.myekart.utilities.config.exception.ResponseStatus;
 import com.myekart.utilities.enums.StatusCd;
@@ -114,6 +118,48 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 		}
 		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS));
 		return response;
+	}
+
+	@Override
+	public OrderResponse validateOrder(OrderRequest request) throws InventoryItemException {
+		OrderResponse response = new OrderResponse();
+		BigDecimal bill = validateOrderItemsAndCalculateBill(request.getOrderItems());
+		request.setTotalBill(bill);
+		response.setMessage(request);
+		response.setStatus(new ResponseStatus(ResponseStatus.SUCCESS));
+		return response;
+	}
+
+	private BigDecimal validateOrderItemsAndCalculateBill(List<OrderItemsRequest> orderItems)
+			throws InventoryItemException {
+		List<String> errors = new ArrayList<String>();
+		BigDecimal bill = BigDecimal.ZERO;
+		for (OrderItemsRequest orderItem : orderItems) {
+			InventoryItem item = inventoryItemRepository.findByItemIdAndStatusCd(orderItem.getItemId(),
+					StatusCd.IN_STOCK.status());
+			if (item == null) {
+				String message = orderItem.getItemName() + "[Not found]";
+				errors.add(message);
+			} else if (item.getAvailableQuantity() == 0) {
+				String message = orderItem.getItemName() + "[Out of stock]";
+				errors.add(message);
+			} else if (orderItem.getQuantity() > item.getAvailableQuantity()) {
+				String message = orderItem.getItemName() + "[Only " + item.getAvailableQuantity() + " are in stock]";
+				errors.add(message);
+			} else {
+				int remainingQuantity = item.getAvailableQuantity() - orderItem.getQuantity();
+				item.setAvailableQuantity(remainingQuantity);
+				bill = bill.add(item.getPrice().multiply(new BigDecimal(orderItem.getQuantity())));
+				inventoryItemRepository.save(item);
+			}
+		}
+		if (CollectionUtils.isNotEmpty(errors)) {
+			StringBuilder errorMessage = new StringBuilder();
+			errors.forEach(err -> errorMessage.append(err).append("\n"));
+			throw new InventoryItemException(errorMessage.toString());
+		}
+		return bill;
+
 	}
 
 }

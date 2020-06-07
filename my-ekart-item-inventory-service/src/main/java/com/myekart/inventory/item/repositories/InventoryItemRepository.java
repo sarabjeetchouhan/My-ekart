@@ -10,4 +10,5 @@ import com.myekart.inventory.item.entity.InventoryItem;
 public interface InventoryItemRepository
 		extends PagingAndSortingRepository<InventoryItem, Long>, JpaSpecificationExecutor<InventoryItem> {
 
+	InventoryItem findByItemIdAndStatusCd(String itemId, String statusCd);
 }

@@ -14,10 +14,11 @@ import com.myekart.admin.user.exception.UserException;
 import com.myekart.admin.user.service.UserService;
 import com.myekart.messaging.admin.user.UserRequest;
 import com.myekart.messaging.admin.user.UserResponse;
+import com.myekart.utilities.config.exception.ApplicationExceptionHandler;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController extends ApplicationExceptionHandler {
 
 	@Autowired
 	private UserService userService;

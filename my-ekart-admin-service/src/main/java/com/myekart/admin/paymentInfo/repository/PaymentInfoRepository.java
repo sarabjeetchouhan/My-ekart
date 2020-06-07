@@ -1,5 +1,7 @@
 package com.myekart.admin.paymentInfo.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,7 @@ public interface PaymentInfoRepository extends PagingAndSortingRepository<Paymen
 	PaymentInfo findByUserIdAndPayeeAccountNumber(String userId, String payeeAccountNumber);
 
 	PaymentInfo findByUserIdAndPaymentInfoIdAndStatusCd(String userId, String paymentInfoId, String statusCd);
+
+	List<PaymentInfo> findByUserIdAndStatusCd(String userId, String status);
 
 }

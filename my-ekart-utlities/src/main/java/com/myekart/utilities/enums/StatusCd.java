@@ -28,7 +28,10 @@ public enum StatusCd {
 	/** The in stock. */
 	IN_STOCK("IN_STOCK"),
 	/** The out of stock. */
-	OUT_OF_STOCK("OUT_OF_STOCK");
+	OUT_OF_STOCK("OUT_OF_STOCK"),
+
+	/** The placed. */
+	IN_PROGRESS("IN_PROGRESS");
 
 	/** The code. */
 	private String code;

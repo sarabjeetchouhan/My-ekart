@@ -13,6 +13,9 @@ zuul:
     users:
       path: /users/**
       url: http://localhost:8010/users
-    wallet:
-      path: /wallet/**
-      url: http://localhost:8015/wallet
+    inventory:
+      path: /inventory/**
+      url: http://localhost:8015/inventory
+    orders:
+      path: /orders/**
+      url: http://localhost:8020/orders
